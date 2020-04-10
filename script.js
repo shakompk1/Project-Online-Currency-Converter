@@ -82,6 +82,9 @@ function takeCurrencyOnline() {
         )
         .catch(
             (error)=>{
+                setTimeout(()=>{    
+                    loading.style.display= 'none';
+                    },1000)
                 alert('что-то пошло не так')
             }
         )
