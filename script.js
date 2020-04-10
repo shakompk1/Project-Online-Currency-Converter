@@ -135,4 +135,4 @@ function swaper() {
     })
     console.log(firstInfo);
     console.log(secondInfo);
-}
+};
