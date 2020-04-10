@@ -18,6 +18,7 @@ let secondBySecondConvert = document.querySelector('.secondBySecondConvert');
 
 let swap = document.querySelector('.swap');
 
+let loading = document.querySelector('.loadingscreen')
 //Ивенты перменных выбора валюты
 firstChooseCurrency.forEach(event => {
     event.addEventListener('click', takeFirstCurrency);
@@ -67,12 +68,21 @@ function check() {
 }
 //Функция нахождения данных в интренете
 function takeCurrencyOnline() {
+    loading.style.display= 'flex';
     let numberConvert = fetch(`https://api.ratesapi.io/api/latest?base=${firstCurrency}&symbols=${secondCurrency}`)
     numberConvert.then((resolt) => resolt.json())
         .then(
             (result) => {
                 objConvert = result;
+                setTimeout(()=>{    
+                loading.style.display= 'none';
+                },1000)
                 convertInputOne();
+            }
+        )
+        .catch(
+            (error)=>{
+                alert('что-то пошло не так')
             }
         )
 };
@@ -132,7 +142,5 @@ function swaper() {
             secondCurrency = item.value;
             check();
         }
-    })
-    console.log(firstInfo);
-    console.log(secondInfo);
+    });
 };

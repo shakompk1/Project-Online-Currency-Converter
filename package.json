@@ -1,0 +1,30 @@
+{
+  "name": "bootcamp-project-m4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts.js",
+  "scripts": {
+    "start": "node script.js",
+    "prettier:fix": "prettier \"script.js\" --write",
+    "build": "webpack",
+    "build:prod": "webpack --config webpack.prod.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shakompk1/bootcamp-project-M4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shakompk1/bootcamp-project-M4/issues"
+  },
+  "homepage": "https://github.com/shakompk1/bootcamp-project-M4#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
+    "package_name": "^1.0.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
