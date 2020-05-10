@@ -1,24 +1,18 @@
 //Переменные Валюты
 let firstCurrency = "RUB";
 let secondCurrency = "USD";
-
 let objConvert;
 //Переменные выбора валюты и inpute
 let firstChooseCurrency = document.querySelectorAll('.converBlockOne .chooseCurrency input');
 let firstMultiCurrency = document.querySelector('.converBlockOne select');
-
 let secondChooseCurrency = document.querySelectorAll('.converBlockTwo .chooseCurrency input');
 let secondMultiCurrency = document.querySelector('.converBlockTwo select');
-
 let numberConverAdd = document.querySelector('#numberConverAdd')
 let numberConverShow = document.querySelector('#numberConverShow')
-
 let oneByOneConvert = document.querySelector('.oneByOneConvert');
 let secondBySecondConvert = document.querySelector('.secondBySecondConvert');
-
 let swap = document.querySelector('.swap');
-
-let loading = document.querySelector('.loadingscreen')
+let loading = document.querySelector('.loadingscreen');
 //Ивенты перменных выбора валюты
 firstChooseCurrency.forEach(event => {
     event.addEventListener('click', takeFirstCurrency);
@@ -68,23 +62,23 @@ function check() {
 }
 //Функция нахождения данных в интренете
 function takeCurrencyOnline() {
-    loading.style.display= 'flex';
+    loading.style.display = 'flex';
     let numberConvert = fetch(`https://api.ratesapi.io/api/latest?base=${firstCurrency}&symbols=${secondCurrency}`)
     numberConvert.then((resolt) => resolt.json())
         .then(
             (result) => {
                 objConvert = result;
-                setTimeout(()=>{    
-                loading.style.display= 'none';
-                },1000)
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 1000)
                 convertInputOne();
             }
         )
         .catch(
-            (error)=>{
-                setTimeout(()=>{    
-                    loading.style.display= 'none';
-                    },1000)
+            (error) => {
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 1000)
                 alert('что-то пошло не так')
             }
         )
@@ -108,8 +102,8 @@ function convertInputTwo() {
 //Нижний текст
 function converOneByOne(objConvert) {
     oneByOneConvert.innerHTML = `1 ${firstCurrency} = ${((objConvert == undefined) ? 1 : objConvert).toFixed(4)} ${secondCurrency}`;
-    secondBySecondConvert.innerHTML = `1 ${secondCurrency} = ${(1 / objConvert).toFixed(4)}  ${firstCurrency}`;
-}
+    secondBySecondConvert.innerHTML = `1 ${secondCurrency} = ${(1 / ((objConvert == undefined) ? 1 : objConvert)).toFixed(4)}  ${firstCurrency}`;
+};
 //Свапает
 function swaper() {
     let numbTwo = numberConverShow.value;
